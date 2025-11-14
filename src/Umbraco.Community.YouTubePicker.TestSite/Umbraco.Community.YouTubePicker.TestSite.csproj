@@ -21,6 +21,62 @@
     <ProjectReference Include="..\Umbraco.Community.YouTubePicker\Umbraco.Community.YouTubePicker.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="uSync\v15\Content\home.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\ContentTypes\home.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\ApprovedColor.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\CheckboxList.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\ContentPicker.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\DatePicker.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\DatePickerWithTime.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\Dropdown.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\DropdownMultiple.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\ImageCropper.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\ImageMediaPicker.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\LabelBigint.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\LabelDatetime.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\LabelDecimal.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\LabelInteger.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\LabelString.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\LabelTime.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\ListViewContent.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\ListViewMedia.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\MediaPicker.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\MemberPicker.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\MultipleImageMediaPicker.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\MultipleMediaPicker.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\MultiURLPicker.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\Numeric.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\Radiobox.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\RichtextEditor.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\Tags.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\Textarea.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\Textstring.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\Truefalse.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\UploadArticle.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\UploadAudio.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\UploadFile.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\UploadVectorGraphics.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\UploadVideo.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\DataTypes\YouTubePicker.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\Languages\en-us.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\Media\img_7803.jpeg.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\Media\img_7804.jpeg.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\Media\img_7806.jpeg.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\Media\img_7807.jpeg.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\Media\new-folder-name.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\MediaTypes\file.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\MediaTypes\folder.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\MediaTypes\image.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\MediaTypes\umbracomediaarticle.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\MediaTypes\umbracomediaaudio.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\MediaTypes\umbracomediavectorgraphics.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\MediaTypes\umbracomediavideo.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\MemberTypes\member.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\Templates\home.config" />
+    <_ContentIncludedByDefault Remove="uSync\v15\usync.config" />
+  </ItemGroup>
+
   <PropertyGroup>
     <!-- Razor files are needed for the backoffice to work correctly -->
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
