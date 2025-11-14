@@ -1,0 +1,14 @@
+{
+  "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "AuthorDetails": {
+    "Name": "Ian Houghton",
+    "ImageUrl": "https://github.com/redmorello.png"
+  },
+  "Category": "Developer Tools",
+  "Description": "Custom Umbraco datatype to enable editors to pick YouTube videos or playlists from a specific YouTube channel. You'll need a Google account and signup for an API key before you can use it.",
+  "LicenseTypes": [ "Free" ],
+  "IssueTrackerUrl": "https://github.com/redmorello/Umbraco.Community.YouTubePicker/issues",
+  "PackageType": "Package",
+  "Tags": [ "YouTube", "Video", "Datatype" ],
+  "Title": "Umbraco .Community .You Tube Picker "
+}

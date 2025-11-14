@@ -1,0 +1,18 @@
+{
+  "id": "Umbraco.Community.YouTubePicker",
+  "name": "Umbraco.Community.YouTubePicker",
+  "version": "17.0.0",
+  "allowPackageTelemetry": true,
+  "extensions": [
+    {
+      "name": "Umbraco Community YouTube Picker.Bundle",
+      "alias": "Umbraco.Community.YouTubePicker.Bundle",
+      "type": "bundle",
+      "js": "/App_Plugins/UmbracoCommunityYouTubePicker/umbraco-community-you-tube-picker.js",
+      "meta": {
+        "group": "pickers",
+        "propertyEditorSchemaAlias": "Umbraco.Community.YouTubePicker.DataEditor"
+      }
+    }
+  ]
+}
