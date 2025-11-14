@@ -15,12 +15,7 @@ const e = [
             alias: "apiKey",
             label: "YouTube API Key",
             description: "Please enter your YouTube API Key",
-            propertyEditorUiAlias: "Umb.PropertyEditorUi.TextBox",
-            config: {
-              required: !0,
-              placeholder: "Enter your YouTube API Key",
-              validation: { mandatory: !0 }
-            }
+            propertyEditorUiAlias: "Umb.PropertyEditorUi.TextBox"
           },
           {
             alias: "channelId",
