@@ -15,12 +15,7 @@ export const manifests: Array<UmbExtensionManifest> = [
             alias: "apiKey",
             label: "YouTube API Key",
             description: "Please enter your YouTube API Key",
-            propertyEditorUiAlias: "Umb.PropertyEditorUi.TextBox",
-            config:{
-              required: true,
-              placeholder: "Enter your YouTube API Key",
-              validation: {mandatory: true}
-            }
+            propertyEditorUiAlias: "Umb.PropertyEditorUi.TextBox"
           },
           {
             alias: "channelId",
