@@ -1,5 +1,26 @@
 export const manifests: Array<UmbExtensionManifest> = [
   {
+    name: "YouTube Picker API Key Input",
+    alias: "Umbraco.Community.YouTubePicker.ApiKey",
+    type: 'propertyEditorUi',
+    js: () => import("./api-key.element.js"),
+    meta: { label: "YouTube Picker API Key", icon: "icon-info", group: "common" }
+  },
+  {
+    name: "YouTube Picker Start Time Input",
+    alias: "Umbraco.Community.YouTubePicker.StartTime",
+    type: 'propertyEditorUi',
+    js: () => import("./start-time.element.js"),
+    meta: { label: "YouTube Picker Start Time", icon: "icon-info", group: "common" }
+  },
+  {
+    name: "YouTube Picker End Time Input",
+    alias: "Umbraco.Community.YouTubePicker.EndTime",
+    type: 'propertyEditorUi',
+    js: () => import("./end-time.element.js"),
+    meta: { label: "YouTube Picker End Time", icon: "icon-info", group: "common" }
+  },
+  {
     name: "Umbraco Community YouTube Picker",
     alias: "Umbraco.Community.YouTubePicker",
     type: 'propertyEditorUi',
@@ -15,7 +36,7 @@ export const manifests: Array<UmbExtensionManifest> = [
             alias: "apiKey",
             label: "YouTube API Key",
             description: "Please enter your YouTube API Key",
-            propertyEditorUiAlias: "Umb.PropertyEditorUi.TextBox"
+            propertyEditorUiAlias: "Umbraco.Community.YouTubePicker.ApiKey"
           },
           {
             alias: "channelId",
@@ -44,13 +65,7 @@ export const manifests: Array<UmbExtensionManifest> = [
           {
             alias: "rel",
             label: "Related Videos",
-            description: "If the parameter is unchecked, then related videos will come from the same channel as the video that was just played. If the parameter is checked, then the player shows related videos from YouTube.",
-            propertyEditorUiAlias: "Umb.PropertyEditorUi.Toggle"
-          },
-          {
-            alias: "modestbranding",
-            label: "Modest Branding",
-            description: "Set the parameter to checked to prevent the YouTube logo from displaying in the control bar.",
+            description: "If unchecked, related videos shown after playback will be from the same channel. If checked, related videos may come from any YouTube channel.",
             propertyEditorUiAlias: "Umb.PropertyEditorUi.Toggle"
           },
           {
@@ -63,6 +78,36 @@ export const manifests: Array<UmbExtensionManifest> = [
             alias: "fs",
             label: "Prevent Fullscreen",
             description: "Set the parameter to checked to prevent the fullscreen button from displaying in the player.",
+            propertyEditorUiAlias: "Umb.PropertyEditorUi.Toggle"
+          },
+          {
+            alias: "controls",
+            label: "Player Controls",
+            description: "Uncheck to hide the player controls bar. Controls are shown by default.",
+            propertyEditorUiAlias: "Umb.PropertyEditorUi.Toggle"
+          },
+          {
+            alias: "loop",
+            label: "Loop",
+            description: "Check to loop the video continuously.",
+            propertyEditorUiAlias: "Umb.PropertyEditorUi.Toggle"
+          },
+          {
+            alias: "start",
+            label: "Start Time (seconds)",
+            description: "Start playback at this many seconds into the video. Set to 0 to start from the beginning.",
+            propertyEditorUiAlias: "Umbraco.Community.YouTubePicker.StartTime"
+          },
+          {
+            alias: "end",
+            label: "End Time (seconds)",
+            description: "Stop playback at this many seconds. Set to 0 to play to the end.",
+            propertyEditorUiAlias: "Umbraco.Community.YouTubePicker.EndTime"
+          },
+          {
+            alias: "ccLoadPolicy",
+            label: "Show Captions",
+            description: "Check to show closed captions by default.",
             propertyEditorUiAlias: "Umb.PropertyEditorUi.Toggle"
           }
         ]

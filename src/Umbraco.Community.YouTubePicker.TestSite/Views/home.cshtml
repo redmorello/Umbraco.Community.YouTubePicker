@@ -1,5 +1,9 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-	Layout = null;
+	Layout = "master.cshtml";
 }
+
+<h1>Example usage of YouTube Video Picker</h1>
+
+@await Html.PartialAsync("video", Model)

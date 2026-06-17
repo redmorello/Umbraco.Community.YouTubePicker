@@ -1,5 +1,6 @@
-using Umbraco.Cms.Core.Models;
+using System.ComponentModel.DataAnnotations;
 using Umbraco.Cms.Core.PropertyEditors;
+using Umbraco.Community.YouTubePicker.Code.Validators;
 
 namespace Umbraco.Community.YouTubePicker.Code;
 
@@ -11,6 +12,12 @@ public class YouTubePickerDataEditor : DataEditor
     {
     }
 
-    protected override IDataValueEditor CreateValueEditor()
-        => DataValueEditorFactory.Create<YouTubePickerDataValueEditor>(Attribute!);
+    protected override IConfigurationEditor CreateConfigurationEditor()
+        => new YouTubePickerConfigurationEditor();
+
+    private sealed class YouTubePickerConfigurationEditor : ConfigurationEditor
+    {
+        public override IEnumerable<ValidationResult> Validate(IDictionary<string, object> configuration)
+            => YouTubePickerConfigValidator.Validate(configuration);
+    }
 }
