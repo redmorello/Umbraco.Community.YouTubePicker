@@ -14,6 +14,12 @@
   "LookingForContributors":  true,
   "LookingForMaintainer": false,
   "PackageType": "Package",
+  "Screenshots": [
+    {
+      "ImageUrl": "https://raw.githubusercontent.com/redmorello/Umbraco.Community.YouTubePicker/64637700dee1b0be694a132e93936a39df358c2a/images/youtube.png",
+      "Caption": "Umbraco.Community.YouTubePicker logo"
+    }
+  ],
   "Tags": [
     "backoffice",
     "property editor",

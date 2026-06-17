@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Product>Umbraco.Community.Umbraco.Community.YouTubePicker</Product>
-    <PackageId>Umbraco.Community.Umbraco.Community.YouTubePicker</PackageId>
+    <Product>Umbraco.Community.YouTubePicker</Product>
+    <PackageId>Umbraco.Community.YouTubePicker</PackageId>
     <Title>Umbraco .Community .YouTube Picker</Title>
     <Description>Custom Umbraco datatype to enable editors to pick YouTube videos or playlists from a specific YouTube channel.</Description>
     <PackageTags>umbraco;umbraco-marketplace</PackageTags>
@@ -19,7 +19,7 @@
     <PackageReadmeFile>README_nuget.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIcon></PackageIcon>
+    <PackageIcon>https://raw.githubusercontent.com/redmorello/Umbraco.Community.YouTubePicker/64637700dee1b0be694a132e93936a39df358c2a/images/youtube.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
