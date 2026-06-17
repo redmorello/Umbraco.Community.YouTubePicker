@@ -19,21 +19,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v5
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v6
-      with:
-        node-version-file: src/Umbraco.Community.YouTubePicker.Client/.nvmrc
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@redmorello'
-    - run: npm i
-      working-directory: src/Umbraco.Community.YouTubePicker.Client
-    - run: npm run build
-      working-directory: src/Umbraco.Community.YouTubePicker.Client
-
-    - name: Set npm package version from tag
-      run: npm pkg set version=${{github.ref_name}}
-      working-directory: src/Umbraco.Community.YouTubePicker.Client
-
     - name: Setup .NET
       uses: actions/setup-dotnet@v5
       with:
@@ -41,12 +26,6 @@ jobs:
 
     - name: Build and pack
       run: dotnet pack src\Umbraco.Community.YouTubePicker\Umbraco.Community.YouTubePicker.csproj -c Release /p:Version=${{github.ref_name}}
-
-    - name: Push to GitHub npm
-      run: npm publish ${{ contains(github.ref_name, '-') && '--tag next' || '' }}
-      working-directory: src/Umbraco.Community.YouTubePicker.Client
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
     - name: Push to GitHub NuGet
       run: dotnet nuget push **\*.nupkg -k ${{secrets.GITHUB_TOKEN}} -s https://nuget.pkg.github.com/redmorello/index.json
