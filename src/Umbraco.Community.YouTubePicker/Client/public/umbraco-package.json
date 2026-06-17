@@ -1,7 +1,7 @@
 {
   "id": "Umbraco.Community.YouTubePicker",
   "name": "Umbraco.Community.YouTubePicker",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "allowPackageTelemetry": true,
   "extensions": [
     {
