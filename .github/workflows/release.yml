@@ -24,7 +24,7 @@ jobs:
       with:
         node-version-file: src/Umbraco.Community.YouTubePicker.Client/.nvmrc
         registry-url: 'https://npm.pkg.github.com'
-        scope: '@leekelleher'
+        scope: '@redmorello'
     - run: npm i
       working-directory: src/Umbraco.Community.YouTubePicker.Client
     - run: npm run build
