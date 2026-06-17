@@ -13,6 +13,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
 
     steps:
 
@@ -31,4 +32,8 @@ jobs:
       run: dotnet nuget push **\*.nupkg -k ${{secrets.GITHUB_TOKEN}} -s https://nuget.pkg.github.com/redmorello/index.json
 
     - name: Push to NuGet
-      run: dotnet nuget push **\*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
+      run: |
+        $oidcToken = (Invoke-RestMethod "$env:ACTIONS_ID_TOKEN_REQUEST_URL&audience=nuget.org" -Headers @{Authorization="bearer $env:ACTIONS_ID_TOKEN_REQUEST_TOKEN"}).value
+        $nugetToken = (Invoke-RestMethod "https://api.nuget.org/v1/trustedpublisher/oidctoken" -Method Post -ContentType "application/json" -Body (ConvertTo-Json @{oidcToken=$oidcToken})).tokenValue
+        dotnet nuget push **\*.nupkg --api-key $nugetToken -s https://api.nuget.org/v3/index.json
+      shell: pwsh
