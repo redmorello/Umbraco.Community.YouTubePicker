@@ -19,8 +19,12 @@
     <PackageReadmeFile>README_nuget.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIcon>https://raw.githubusercontent.com/redmorello/Umbraco.Community.YouTubePicker/64637700dee1b0be694a132e93936a39df358c2a/images/youtube.png</PackageIcon>
+    <PackageIcon>images\youtube.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="images\youtube.png" Pack="true" PackagePath="images\" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Umbraco.Cms.Web.Website" Version="17.0.0-rc1" />
