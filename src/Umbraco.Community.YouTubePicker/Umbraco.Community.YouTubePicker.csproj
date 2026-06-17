@@ -9,8 +9,8 @@
   <PropertyGroup>
     <Product>Umbraco.Community.Umbraco.Community.YouTubePicker</Product>
     <PackageId>Umbraco.Community.Umbraco.Community.YouTubePicker</PackageId>
-    <Title>Umbraco .Community .You Tube Picker </Title>
-    <Description>...</Description>
+    <Title>Umbraco .Community .YouTube Picker</Title>
+    <Description>Custom Umbraco datatype to enable editors to pick YouTube videos or playlists from a specific YouTube channel.</Description>
     <PackageTags>umbraco;umbraco-marketplace</PackageTags>
     <Authors>Ian Houghton</Authors>
     <Copyright>$([System.DateTime]::UtcNow.ToString(`yyyy`)) © Ian Houghton</Copyright>

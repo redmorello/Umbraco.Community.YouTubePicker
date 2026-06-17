@@ -12,7 +12,8 @@ public class YouTubePickerDataValueEditor : DataValueEditor
         IShortStringHelper shortStringHelper,
         IJsonSerializer jsonSerializer,
         IIOHelper ioHelper,
-        DataEditorAttribute attribute)
-        : base(shortStringHelper, jsonSerializer, ioHelper, attribute)
-        => Validators.Add(new YouTubePickerValueValidator());
+        DataEditorAttribute attribute) : base(shortStringHelper, jsonSerializer, ioHelper, attribute)
+    {
+        Validators.Add(new YouTubePickerValueValidator());
+    }
 }

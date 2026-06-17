@@ -1,6 +1,5 @@
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.PropertyEditors;
-using Umbraco.Community.YouTubePicker.Code.Validators;
 
 namespace Umbraco.Community.YouTubePicker.Code;
 

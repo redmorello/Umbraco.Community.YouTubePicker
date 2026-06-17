@@ -1,14 +1,26 @@
 {
   "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+  "AlternateCategory": "Developer Tools",
   "AuthorDetails": {
     "Name": "Ian Houghton",
-    "ImageUrl": "https://github.com/redmorello.png"
+    "ImageUrl": "https://github.com/redmorello.png",
+    "Contributors": [],
+    "SyncContributorsFromRepository": false
   },
   "Category": "Developer Tools",
   "Description": "Custom Umbraco datatype to enable editors to pick YouTube videos or playlists from a specific YouTube channel. You'll need a Google account and signup for an API key before you can use it.",
-  "LicenseTypes": [ "Free" ],
   "IssueTrackerUrl": "https://github.com/redmorello/Umbraco.Community.YouTubePicker/issues",
+  "LicenseTypes": [ "Free" ],
+  "LookingForContributors":  true,
+  "LookingForMaintainer": false,
   "PackageType": "Package",
-  "Tags": [ "YouTube", "Video", "Datatype" ],
-  "Title": "Umbraco .Community .You Tube Picker "
+  "Tags": [
+    "backoffice",
+    "property editor",
+    "YouTube",
+    "Video",
+    "Datatype"
+  ],
+  "Title": "Umbraco .Community .YouTube Picker",
+  "VersionDependencyMode": "Default"
 }
