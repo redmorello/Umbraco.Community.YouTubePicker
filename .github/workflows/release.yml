@@ -6,7 +6,7 @@ on:
       - "[0-9]+.[0-9]+.[0-9]+*"
 
 jobs:
-  build:
+  build-and-publish:
 
     runs-on: windows-latest
 
@@ -28,12 +28,23 @@ jobs:
     - name: Build and pack
       run: dotnet pack src\Umbraco.Community.YouTubePicker\Umbraco.Community.YouTubePicker.csproj -c Release /p:Version=${{github.ref_name}}
 
-    - name: Push to GitHub NuGet
-      run: dotnet nuget push **\*.nupkg -k ${{secrets.GITHUB_TOKEN}} -s https://nuget.pkg.github.com/redmorello/index.json
+    # Get a short-lived NuGet API key
+    - name: NuGet login (OIDC → temp API key)
+      uses: NuGet/login@v1
+      id: login
+      with:
+        user: redmorello # Recommended: use a secret like ${{ secrets.NUGET_USER }} for your nuget.org username (profile name), NOT your email address
+    
+    # Push the package
+    - name: NuGet push
+      run: dotnet nuget push **\*.nupkg --api-key ${{steps.login.outputs.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
 
-    - name: Push to NuGet
-      run: |
-        $oidcToken = (Invoke-RestMethod "$env:ACTIONS_ID_TOKEN_REQUEST_URL&audience=nuget.org" -Headers @{Authorization="bearer $env:ACTIONS_ID_TOKEN_REQUEST_TOKEN"}).value
-        $nugetToken = (Invoke-RestMethod "https://api.nuget.org/v1/trustedpublisher/oidctoken" -Method Post -ContentType "application/json" -Body (ConvertTo-Json @{oidcToken=$oidcToken})).tokenValue
-        dotnet nuget push **\*.nupkg --api-key $nugetToken -s https://api.nuget.org/v3/index.json
-      shell: pwsh
+    # - name: Push to GitHub NuGet
+    #   run: dotnet nuget push **\*.nupkg -k ${{secrets.GITHUB_TOKEN}} -s https://nuget.pkg.github.com/redmorello/index.json
+
+    # - name: Push to NuGet
+    #   run: |
+    #     $oidcToken = (Invoke-RestMethod "$env:ACTIONS_ID_TOKEN_REQUEST_URL&audience=nuget.org" -Headers @{Authorization="bearer $env:ACTIONS_ID_TOKEN_REQUEST_TOKEN"}).value
+    #     $nugetToken = (curl.exe -s -X POST -H "Content-Type: application/json" -d "{`"oidcToken`":`"$oidcToken`"}" "https://api.nuget.org/v1/trustedpublisher/oidctoken" | ConvertFrom-Json).tokenValue
+    #     dotnet nuget push **\*.nupkg --api-key $nugetToken -s https://api.nuget.org/v3/index.json
+    #   shell: pwsh
