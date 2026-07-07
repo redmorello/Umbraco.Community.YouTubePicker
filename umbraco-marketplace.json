@@ -1,6 +1,6 @@
 {
   "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
-  "AlternateCategory": "Developer Tools",
+  "AlternateCategory": "Editor Tools",
   "AuthorDetails": {
     "Name": "Ian Houghton",
     "ImageUrl": "https://github.com/redmorello.png",
