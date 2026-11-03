@@ -15,20 +15,54 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.Community.YouTubePi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.Community.YouTubePicker", "Umbraco.Community.YouTubePicker\Umbraco.Community.YouTubePicker.csproj", "{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Umbraco.Community.YouTubePicker.TestSiteV18", "Umbraco.Community.YouTubePicker.TestSiteV18\Umbraco.Community.YouTubePicker.TestSiteV18.csproj", "{42AB5461-E835-4F83-BAF3-F971744C386E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Debug|x64.Build.0 = Debug|Any CPU
+		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Debug|x86.Build.0 = Debug|Any CPU
 		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Release|x64.ActiveCfg = Release|Any CPU
+		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Release|x64.Build.0 = Release|Any CPU
+		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Release|x86.ActiveCfg = Release|Any CPU
+		{D40B22E6-0BA2-4AC7-8005-150326151A4B}.Release|x86.Build.0 = Release|Any CPU
 		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Debug|x64.Build.0 = Debug|Any CPU
+		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Debug|x86.Build.0 = Debug|Any CPU
 		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Release|x64.ActiveCfg = Release|Any CPU
+		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Release|x64.Build.0 = Release|Any CPU
+		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Release|x86.ActiveCfg = Release|Any CPU
+		{9B92E27E-09AF-4A5B-9F19-62FF7138E22D}.Release|x86.Build.0 = Release|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Debug|x64.Build.0 = Debug|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Debug|x86.Build.0 = Debug|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Release|x64.ActiveCfg = Release|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Release|x64.Build.0 = Release|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Release|x86.ActiveCfg = Release|Any CPU
+		{42AB5461-E835-4F83-BAF3-F971744C386E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
