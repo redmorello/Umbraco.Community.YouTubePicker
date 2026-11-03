@@ -118,7 +118,7 @@ const e = [
     type: "modal",
     alias: "youtube-picker-modal",
     name: "Youtube Picker Modal",
-    element: () => import("./modal.element-DchFO-bi.js")
+    element: () => import("./modal.element-u8MSkGoJ.js")
   }
 ], o = [
   ...e
