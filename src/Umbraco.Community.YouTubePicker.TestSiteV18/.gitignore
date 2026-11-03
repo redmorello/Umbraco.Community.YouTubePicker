@@ -480,3 +480,6 @@ umbraco-package-schema.json
 
 # Media files
 /wwwroot/media/
+
+# YouTube Picker data type config contains the YouTube API key
+/uSync/*/DataTypes/YouTubePicker.config
