@@ -223,30 +223,29 @@ export default class YoutubePickerModalElement
     }
 }
 
-  #renderCard(item: YouTubeItem) {
-    //const canNavigate = true; // this.#allowNavigateToMedia(item);
-    //const selectable = true; // this._selectableFilter(item);
-    //const disabled = false; // !(selectable || canNavigate);
+  // the YouTube search API returns titles HTML-encoded, e.g. Here&#39;s
+  #decodeHtml(value: string) {
+    return new DOMParser().parseFromString(value, 'text/html').documentElement.textContent ?? value;
+  }
 
-    //class=${ifDefined(disabled ? 'not-allowed' : undefined)}
-    //@open=${() => this.#onOpen(item)}
-    //@selected=${() => this.#onSelected(item)}
-    //@deselected=${() => this.#onDeselected(item)}
-    //?selected = ${this.value?.selection?.find((value) => value === item.unique)}
-    //?selectable = ${selectable}
-    //?select-only=${this._isSelectionMode || canNavigate === false}
+  #renderCard(item: YouTubeItem) {
+    const title = this.#decodeHtml(item.snippet.title);
+    const selected = this._selectedItem === item;
+
     return html`
-          <uui-card-media
-            .name=${ item.snippet.title }
+          <button
+            type="button"
+            class="result-card ${selected ? 'selected' : ''}"
+            title=${title}
+            aria-pressed=${selected}
             data-mark="${item.kind}:${item.id.videoId}"
-            class=${this._selectedItem === item ? 'selected' : ''}
-            @deselected=${() => this.#onDeselected()}
-            @open=${() => this.#onSelected(item)}
-            >
-          <img
-            src="${item.snippet.thumbnails !== null && item.snippet.thumbnails.default !== null ? item.snippet.thumbnails.default.url : ""}"
-            alt="${item.snippet.title}" />
-          </uui-card-media>
+            @click=${() => selected ? this.#onDeselected() : this.#onSelected(item)}>
+            <img
+              src="${item.snippet.thumbnails?.medium?.url ?? item.snippet.thumbnails?.default?.url ?? ""}"
+              alt=""
+              loading="lazy" />
+            <span class="result-title">${title}</span>
+          </button>
       `;
   }
 
@@ -414,7 +413,7 @@ export default class YoutubePickerModalElement
 				margin: var(--uui-size-space-1) 0 0;
 				font-size: var(--uui-type-small-size);
 				display: -webkit-box;
-				-webkit-line-clamp: 2;
+				-webkit-line-clamp: 4;
 				-webkit-box-orient: vertical;
 				overflow: hidden;
 			}
@@ -434,10 +433,61 @@ export default class YoutubePickerModalElement
 
 			#media-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-				grid-auto-rows: 150px;
+				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+				align-items: start;
 				gap: var(--uui-size-space-5);
 				padding-bottom: 5px; /** The modal is a bit jumpy due to the img card focus/hover border. This fixes the issue. */
+			}
+
+			.result-card {
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				padding: 0;
+				font: inherit;
+				text-align: left;
+				color: var(--uui-color-interactive);
+				background: var(--uui-color-surface);
+				border: 1px solid var(--uui-color-border);
+				border-radius: var(--uui-border-radius);
+				overflow: hidden;
+				cursor: pointer;
+			}
+
+			.result-card:hover {
+				color: var(--uui-color-interactive-emphasis);
+				border-color: var(--uui-color-border-emphasis);
+			}
+
+			.result-card:hover .result-title {
+				text-decoration: underline;
+			}
+
+			.result-card:focus-visible {
+				outline: 2px solid var(--uui-color-focus);
+				outline-offset: 2px;
+			}
+
+			.result-card.selected {
+				border-color: var(--uui-color-selected);
+				box-shadow: 0 0 0 2px var(--uui-color-selected);
+			}
+
+			.result-card img {
+				display: block;
+				width: 100%;
+				aspect-ratio: 16 / 9;
+				object-fit: cover;
+			}
+
+			.result-title {
+				padding: var(--uui-size-space-3) var(--uui-size-space-4);
+				font-weight: 700;
+				line-height: 1.3;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
 			}
 
 			/** TODO: Remove this fix when UUI gets upgrade to 1.3 */
