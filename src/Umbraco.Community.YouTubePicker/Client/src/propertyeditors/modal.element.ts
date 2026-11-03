@@ -1,7 +1,7 @@
-import { css, html, LitElement, customElement, state, property, repeat } from "@umbraco-cms/backoffice/external/lit";
+import { css, html, LitElement, customElement, state, property, repeat, nothing } from "@umbraco-cms/backoffice/external/lit";
 import { UmbElementMixin } from "@umbraco-cms/backoffice/element-api";
 import { UmbracoCommunityYouTubePickerService } from "../api";
-import { YouTubeItem, YouTubeSearchResult } from "../api/types.gen";
+import { YouTubeChannel, YouTubeItem, YouTubeSearchResult } from "../api/types.gen";
 import { UmbModalExtensionElement } from '@umbraco-cms/backoffice/modal';
 import { UmbChangeEvent } from '@umbraco-cms/backoffice/event';
 import type { UmbModalContext } from '@umbraco-cms/backoffice/modal';
@@ -60,6 +60,12 @@ export default class YoutubePickerModalElement
   @state()
   private _pageToken?: string;
 
+  @state()
+  private _channel?: YouTubeChannel;
+
+  @state()
+  private _loadingChannel: boolean = false;
+
   constructor() {
     super();
 
@@ -67,6 +73,27 @@ export default class YoutubePickerModalElement
       { name: 'Video', value: 'video', selected: true },
       { name: 'Playlist', value: 'playlist' }
     ];
+  }
+
+  override firstUpdated() {
+    this.#loadChannel().then();
+  }
+
+  async #loadChannel() {
+    const channelId = this.modalContext?.data.channelId;
+    if (!channelId) return;
+
+    this._loadingChannel = true;
+
+    try {
+      this._channel = await UmbracoCommunityYouTubePickerService.GetChannel(this.modalContext?.data.apiKey, channelId) ?? undefined;
+    } catch (error) {
+      // the notice falls back to showing the raw channel id
+      console.log(error);
+      this._channel = undefined;
+    }
+
+    this._loadingChannel = false;
   }
 
   override render() {
@@ -236,9 +263,65 @@ export default class YoutubePickerModalElement
         ${this._hasResults ? this.#renderSearchResults() : this.#renderNoResults()} `;
   }
 
+  #formatCount(value: string) {
+    return new Intl.NumberFormat(undefined, { notation: 'compact' }).format(Number(value));
+  }
+
+  #renderChannelNotice() {
+    const channelId = this.modalContext?.data.channelId;
+    if (!channelId) return nothing;
+
+    if (this._loadingChannel) {
+      return html`
+          <div id="channel-notice">
+            <uui-loader-circle></uui-loader-circle>
+            <span>Loading channel details...</span>
+          </div>
+      `;
+    }
+
+    const channel = this._channel;
+    if (!channel) {
+      return html`
+          <div id="channel-notice">
+            <div class="channel-details">
+              <strong>Results are limited to a single channel</strong>
+              <span class="channel-meta">Channel ID: ${channelId}</span>
+            </div>
+          </div>
+      `;
+    }
+
+    const stats = channel.statistics;
+    const avatar = channel.snippet.thumbnails?.default?.url;
+
+    return html`
+        <div id="channel-notice">
+          ${avatar ? html`<img class="channel-avatar" src=${avatar} alt="" />` : nothing}
+          <div class="channel-details">
+            <span class="channel-label">Results are limited to this channel</span>
+            <a
+              class="channel-title"
+              href="https://www.youtube.com/channel/${channel.id}"
+              target="_blank"
+              rel="noopener noreferrer">${channel.snippet.title}</a>
+            <span class="channel-meta">
+              ${channel.snippet.customUrl ? html`${channel.snippet.customUrl} · ` : nothing}
+              ${stats && !stats.hiddenSubscriberCount ? html`${this.#formatCount(stats.subscriberCount)} subscribers · ` : nothing}
+              ${stats ? html`${this.#formatCount(stats.videoCount)} videos` : nothing}
+            </span>
+            ${channel.snippet.description
+              ? html`<p class="channel-description">${channel.snippet.description}</p>`
+              : nothing}
+          </div>
+        </div>
+    `;
+  }
+
   #renderToolbar() {
     return html`
         <div id="toolbar">
+          ${this.#renderChannelNotice()}
           <div id="search">
             <uui-input
               label="Search"
@@ -278,9 +361,62 @@ export default class YoutubePickerModalElement
   css`
 			#toolbar {
 				display: flex;
+				flex-wrap: wrap;
 				gap: var(--uui-size-6);
 				align-items: flex-start;
 				margin-bottom: var(--uui-size-3);
+			}
+
+			#channel-notice {
+				flex-basis: 100%;
+				display: flex;
+				align-items: center;
+				gap: var(--uui-size-space-4);
+				padding: var(--uui-size-space-4) var(--uui-size-space-5);
+				background: var(--uui-color-surface-alt);
+				border: 1px solid var(--uui-color-border);
+				border-left: 4px solid var(--uui-color-selected);
+				border-radius: var(--uui-border-radius);
+			}
+
+			#channel-notice .channel-avatar {
+				flex-shrink: 0;
+				width: 48px;
+				height: 48px;
+				border-radius: 50%;
+				background-image: none;
+			}
+
+			#channel-notice .channel-details {
+				display: flex;
+				flex-direction: column;
+				min-width: 0;
+			}
+
+			#channel-notice .channel-label,
+			#channel-notice .channel-meta {
+				font-size: var(--uui-type-small-size);
+				color: var(--uui-color-text-alt);
+			}
+
+			#channel-notice .channel-title {
+				font-weight: 700;
+				color: var(--uui-color-interactive);
+				text-decoration: none;
+			}
+
+			#channel-notice .channel-title:hover {
+				color: var(--uui-color-interactive-emphasis);
+				text-decoration: underline;
+			}
+
+			#channel-notice .channel-description {
+				margin: var(--uui-size-space-1) 0 0;
+				font-size: var(--uui-type-small-size);
+				display: -webkit-box;
+				-webkit-line-clamp: 2;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
 			}
 			#search {
 				flex: 1;

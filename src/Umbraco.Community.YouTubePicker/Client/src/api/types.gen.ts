@@ -51,3 +51,34 @@ export type ThumbnailDetail = {
   width: number;
   height: number;
 }
+
+export type YouTubeChannelListResult = {
+  kind: string;
+  etag: string;
+  pageInfo: PageInfo | null;
+  items?: Array<(YouTubeChannel)>;
+};
+
+export type YouTubeChannel = {
+  kind: string;
+  etag: string;
+  id: string;
+  snippet: ChannelSnippet;
+  statistics?: ChannelStatistics;
+};
+
+export type ChannelSnippet = {
+  title: string;
+  description: string;
+  customUrl?: string;
+  publishedAt: Date;
+  thumbnails: ThumbnailType;
+}
+
+// YouTube returns these counts as strings
+export type ChannelStatistics = {
+  viewCount: string;
+  subscriberCount: string;
+  hiddenSubscriberCount: boolean;
+  videoCount: string;
+}
